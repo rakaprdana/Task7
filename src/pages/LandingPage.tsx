@@ -8,7 +8,6 @@ import GallerySect from "../components/layout/gallerysect";
 import Profile from "../components/layout/profile";
 import ProjectSect from "../components/layout/projectsect";
 import SkillSect from "../components/layout/skillsect";
-import { useNavigate } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 const LandingPage = () => {
   const handleClick = () => {

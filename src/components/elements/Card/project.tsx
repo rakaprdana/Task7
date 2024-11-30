@@ -28,7 +28,6 @@ interface ProjectProps {
 const CardProject = () => {
   const [project, setProject] = useState<ProjectProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,8 +42,8 @@ const CardProject = () => {
           image: image[index],
         }));
         setProject(ProjectImage);
-      } catch (err) {
-        setError(err.message);
+      } catch (error) {
+        console.log(error);
       } finally {
         setIsLoading(false);
       }
@@ -56,9 +55,6 @@ const CardProject = () => {
     return <p>Loading...</p>;
   }
 
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
   return (
     <>
       <div

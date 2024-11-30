@@ -12,6 +12,7 @@ import Copyright from "../components/layout/copyright";
 import AOS from "aos";
 import "aos/dist/aos.css";
 AOS.init();
+
 interface ProjectProps {
   id: number;
   name: string;
@@ -36,6 +37,8 @@ const ProjectDetail = () => {
 
   useEffect(() => {
     const fetchDetailProject = async () => {
+      if (!id) return;
+
       try {
         const resp = await fetch("/project.json");
         if (!resp.ok) {
@@ -56,16 +59,18 @@ const ProjectDetail = () => {
         console.log("Message: ", error);
       }
     };
+
     fetchDetailProject();
   }, [id]);
+
   const handleNext = () => {
-    const currentId = parseInt(id);
+    const currentId = id ? parseInt(id) : 1;
     const nextId = currentId < Object.keys(images).length ? currentId + 1 : 1;
     navigate(`/project/${nextId}`);
   };
 
   const handleBack = () => {
-    const currentId = parseInt(id);
+    const currentId = id ? parseInt(id) : 1;
     const backId = currentId > 1 ? currentId - 1 : Object.keys(images).length;
     navigate(`/project/${backId}`);
   };
@@ -77,8 +82,8 @@ const ProjectDetail = () => {
   return (
     <>
       <div className="flex justify-between mx-8">
-        <Button label="Back" onClick={handleBack} />
-        <Button label="Next" onClick={handleNext} />
+        <Button label="Back" onClick={handleBack} type={"button"} />
+        <Button label="Next" onClick={handleNext} type={"button"} />
       </div>
       <div className="flex flex-col items-center pb-20">
         <h1 className="text-5xl font-bold mb-8">Project Detail</h1>
@@ -102,7 +107,7 @@ const ProjectDetail = () => {
             <p>{project.detail}</p>
           </div>
         </div>
-        <Button label="Home" onClick={() => navigate("/")} />
+        <Button label="Home" onClick={() => navigate("/")} type={"button"} />
       </div>
       <Copyright />
     </>

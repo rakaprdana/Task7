@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "boxicons";
-import Button from "../elements/Button";
 
 const Footer = () => {
   return (
