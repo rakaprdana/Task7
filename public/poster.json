@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Eid al-Fitr 1445 H",
+    "description": "Eid al-Fitr 1445 H is a highly anticipated moment for Muslims worldwide. In this year, Eid al-Fitr falls on the 1st of Shawwal, 1445 Hijri. It's a time for family and friends to come together, seek forgiveness, and celebrate victory after fasting during the holy month of Ramadan. Traditions include the Eid prayer at the mosque or open field, giving zakat al-fitr (charity), and sharing delicious meals with others."
+  },
+  {
+    "id": 2,
+    "name": "Eid al-Fitr 1444 H",
+    "description": "Eid al-Fitr 1444 H is a celebration similar to the previous year but with its own unique nuances. In this year, Muslims celebrate Eid al-Fitr on the 1st of Shawwal, 1444 Hijri. The traditions remain the same: Eid prayer, seeking forgiveness, and spreading joy to others. However, each year carries its own stories and memories."
+  },
+  {
+    "id": 3,
+    "name": "Seminar: Implementing AI in Coding",
+    "description": "This seminar will delve into how artificial intelligence (AI) can be applied in software development processes. Participants will learn fundamental AI concepts, machine learning algorithms, and how to integrate AI into code. Topics covered include an introduction to deep learning, natural language processing, and pattern recognition. The seminar is suitable for developers looking to expand their knowledge of AI and its practical application in coding projects."
+  },
+  {
+    "id": 4,
+    "name": "Webinar: Latest Technology Innovations - Digital Transformation in Indonesia",
+    "description": "This webinar will explore current trends in technology and how digital transformation is impacting Indonesia. Speakers will share insights on artificial intelligence, Internet of Things (IoT), big data, and cloud computing. Participants will understand how companies and organizations can adopt these technologies to enhance efficiency, productivity, and competitiveness. The webinar is relevant for IT professionals, entrepreneurs, and anyone interested in technological developments in Indonesia."
+  },
+  {
+    "id": 5,
+    "name": "Christmas Day",
+    "description": "Christmas Day is celebrated by Christians worldwide to commemorate the birth of Jesus Christ. On December 25th, churches are adorned with Christmas lights, trees, and special ornaments. Traditions include Christmas Eve services, singing carols, and sharing joy with family and friends. It's a time for reflection on the true meaning of Christmas and appreciating the love and peace brought by Jesus' birth."
+  },
+  {
+    "id": 6,
+    "name": "Shoes Discount Poster",
+    "description": "The shoe discount poster is a promotion from a local shoe store. In this poster, they offer significant discounts on various types of shoes, from sneakers to formal footwear. The discount may be time-limited, so shoppers are encouraged to visit the store promptly and take advantage of this opportunity. The poster typically includes details about the original price, discounted price, and the promotional period."
+  }
+]

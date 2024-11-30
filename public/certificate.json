@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "MySkills: Introduction to Frontend"
+  },
+  {
+    "id": 2,
+    "name": "Sololearn: Intermediate JAVA"
+  },
+  {
+    "id": 3,
+    "name": "TalentaAI: Cybersecurity"
+  },
+  {
+    "id": 4,
+    "name": "RevoU: Introduction Software Engineer"
+  },
+  {
+    "id": 5,
+    "name": "Dicoding: Fundamental Javascript"
+  },
+  {
+    "id": 6,
+    "name": "UNKRIS: Web Programming"
+  }
+]
