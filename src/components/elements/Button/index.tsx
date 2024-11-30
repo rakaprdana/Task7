@@ -1,10 +1,10 @@
 interface ButtonProps {
   label: string;
-  type: string;
+  type: "submit" | "reset" | "button";
   onClick: () => void;
 }
 
-const Button = ({ label, onClick, type }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({ label, onClick, type }) => {
   return (
     <>
       <button

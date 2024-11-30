@@ -11,24 +11,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Langkah 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Setup Node.js versi yang digunakan
+      # Langkah 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18" # Sesuaikan dengan versi yang Anda gunakan
 
-      # Install dependencies
+      # Langkah 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Jalankan build aplikasi
+      # Langkah 4: Run tests
+      - name: Run tests
+        run: npm test -- --ci --coverage --watchAll=false
+        env:
+          CI: true
+
+      # Langkah 5: Build React App (jika testing berhasil)
       - name: Build React App
         run: npm run build
 
-      # Deploy ke GitHub Pages (opsional jika Anda menggunakan GitHub Pages)
+      # Langkah 6: Deploy to GitHub Pages (opsional jika Anda menggunakan GitHub Pages)
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

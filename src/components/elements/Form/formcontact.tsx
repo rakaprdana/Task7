@@ -76,7 +76,7 @@ const FormContact = () => {
           className="bg-stone-600 w-full pb-48 px-4 pt-4 rounded-lg"
           placeholder="Your message"
         />
-        <Button type="submit" label="Send message" />
+        <Button type="submit" label="Send message" onClick={() => {}} />
         <ModalSuccess isOpen={isModal} onClose={() => setIsModal(false)} />
       </div>
     </form>
