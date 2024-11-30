@@ -1,0 +1,36 @@
+name: CI/CD for React TypeScript Portfolio
+
+# Jalankan saat ada perubahan di branch `main`
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Setup Node.js versi yang digunakan
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18" # Sesuaikan dengan versi yang Anda gunakan
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Jalankan build aplikasi
+      - name: Build React App
+        run: npm run build
+
+      # Deploy ke GitHub Pages (opsional jika Anda menggunakan GitHub Pages)
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
