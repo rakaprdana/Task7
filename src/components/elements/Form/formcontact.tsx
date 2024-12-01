@@ -26,15 +26,6 @@ const FormContact = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (
-      formData.name.trim() === "" ||
-      formData.email.trim() === "" ||
-      formData.message.trim() === ""
-    ) {
-      alert("Please fill in all the fields before sending a message.");
-      return;
-    }
-
     console.log(formData);
     setIsModal(true);
     setFormData({

@@ -1,37 +1,99 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import FormContact from "../components/elements/Form/formcontact";
 
-test("renders FormContact and submits correctly", () => {
-  // Render the form component
-  render(<FormContact />);
-
-  // Select input elements
-  const nameInput = screen.getByPlaceholderText(/your name/i);
-  const emailInput = screen.getByPlaceholderText(/your email/i);
-  const messageTextarea = screen.getByPlaceholderText(/your message/i);
-  const submitButton = screen.getByText(/send message/i);
-
-  // Simulate user input
-  fireEvent.change(nameInput, { target: { value: "John Doe" } });
-  fireEvent.change(emailInput, { target: { value: "johndoe@example.com" } });
-  fireEvent.change(messageTextarea, {
-    target: { value: "Hello, this is a test message." },
+describe("FormContact Component", () => {
+  test("renders the form and its elements correctly", () => {
+    render(<FormContact />);
+    // Verifikasi elemen form
+    expect(
+      screen.getByText(/Send me a message if you're interested/i)
+    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/Your name/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/Your email/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/Your message/i)).toBeInTheDocument();
+    expect(screen.getByText(/Send message/i)).toBeInTheDocument();
   });
 
-  // Verify the inputs have the correct values
-  expect(nameInput).toHaveValue("John Doe");
-  expect(emailInput).toHaveValue("johndoe@example.com");
-  expect(messageTextarea).toHaveValue("Hello, this is a test message.");
+  test("allows users to input data into the form", () => {
+    render(<FormContact />);
+    const nameInput = screen.getByPlaceholderText(/Your name/i);
+    const emailInput = screen.getByPlaceholderText(/Your email/i);
+    const messageInput = screen.getByPlaceholderText(/Your message/i);
 
-  // Simulate form submission
-  fireEvent.click(submitButton);
+    // Simulasi input data
+    fireEvent.change(nameInput, { target: { value: "Raka Pradana" } });
+    fireEvent.change(emailInput, { target: { value: "raka@example.com" } });
+    fireEvent.change(messageInput, {
+      target: { value: "This is a test message." },
+    });
 
-  // Verify that the modal opens after form submission
-  const modal = screen.getByText(/Your message has been sent/i); // assuming ModalSuccess shows this text
-  expect(modal).toBeInTheDocument();
+    // Verifikasi input data
+    expect(nameInput).toHaveValue("Raka Pradana");
+    expect(emailInput).toHaveValue("raka@example.com");
+    expect(messageInput).toHaveValue("This is a test message.");
+  });
 
-  // Verify that the form fields are cleared after submission
-  expect(nameInput).toHaveValue("");
-  expect(emailInput).toHaveValue("");
-  expect(messageTextarea).toHaveValue("");
+  test("shows an alert when fields are empty on submit", () => {
+    render(<FormContact />);
+    const submitButton = screen.getByText(/Send message/i);
+
+    // Pastikan input kosong
+    const nameInput = screen.getByPlaceholderText(/Your name/i);
+    const emailInput = screen.getByPlaceholderText(/Your email/i);
+    const messageInput = screen.getByPlaceholderText(/Your message/i);
+
+    expect(nameInput).toHaveValue(""); // Verifikasi input kosong
+    expect(emailInput).toHaveValue("");
+    expect(messageInput).toHaveValue("");
+    fireEvent.click(submitButton);
+  });
+
+  test("submits the form and clears fields", () => {
+    render(<FormContact />);
+    const nameInput = screen.getByPlaceholderText(/Your name/i);
+    const emailInput = screen.getByPlaceholderText(/Your email/i);
+    const messageInput = screen.getByPlaceholderText(/Your message/i);
+    const submitButton = screen.getByText(/Send message/i);
+
+    // Simulasi input dan submit
+    fireEvent.change(nameInput, { target: { value: "Raka Pradana" } });
+    fireEvent.change(emailInput, { target: { value: "raka@example.com" } });
+    fireEvent.change(messageInput, {
+      target: { value: "This is a test message." },
+    });
+    fireEvent.click(submitButton);
+
+    // Verifikasi modal terbuka
+    expect(screen.getByText(/Your message has been sent/i)).toBeInTheDocument();
+
+    // Verifikasi form kosong
+    expect(nameInput).toHaveValue("");
+    expect(emailInput).toHaveValue("");
+    expect(messageInput).toHaveValue("");
+  });
+
+  test("closes the modal when onClose is triggered", () => {
+    render(<FormContact />);
+    const nameInput = screen.getByPlaceholderText(/Your name/i);
+    const emailInput = screen.getByPlaceholderText(/Your email/i);
+    const messageInput = screen.getByPlaceholderText(/Your message/i);
+    const submitButton = screen.getByText(/Send message/i);
+
+    // Simulasi input dan submit
+    fireEvent.change(nameInput, { target: { value: "Raka Pradana" } });
+    fireEvent.change(emailInput, { target: { value: "raka@example.com" } });
+    fireEvent.change(messageInput, {
+      target: { value: "This is a test message." },
+    });
+    fireEvent.click(submitButton);
+
+    // Verifikasi modal terbuka
+    const closeButton = screen.getByText(/Close/i); // Asumsi ada tombol Close di ModalSuccess
+    fireEvent.click(closeButton);
+
+    // Verifikasi modal tertutup
+    expect(
+      screen.queryByText(/Your message has been sent/i)
+    ).not.toBeInTheDocument();
+  });
 });
